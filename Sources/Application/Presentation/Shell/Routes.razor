@@ -1,0 +1,15 @@
+﻿@using VerticalSliceBlazorArchitecture.Presentation.Shell.ExceptionHandling
+@using VerticalSliceBlazorArchitecture.Presentation.Shell.Layout
+<AppErrorBoundary @ref="ErrorBoundary" OnExceptionThrown="HandleExceptionThrownAsync">
+    <ChildContent>
+        <Router AppAssembly="typeof(Program).Assembly">
+            <Found Context="routeData">
+                <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)"/>
+                <FocusOnNavigate RouteData="routeData" Selector="h1"/>
+            </Found>
+        </Router>
+    </ChildContent>
+    <ErrorContent>
+        <ErrorInfo AppError="@AppError"></ErrorInfo>
+    </ErrorContent>
+</AppErrorBoundary>

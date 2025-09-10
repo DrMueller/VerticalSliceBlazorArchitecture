@@ -1,0 +1,58 @@
+﻿# Allow any class in any namespace to reference System or any deeper namespace
+* System
+* System.*
+* Microsoft.*
+* JetBrains.*
+* Lamar
+* Lamar.*
+* BlazorBootstrap
+* MediatR
+* MediatR.*
+* MudBlazor
+* MudBlazor.*
+
+# Application Layer
+
+[project].Application [project].Application.*
+[project].Application.* [project].Application.*
+[project].Application.* [project].Common
+[project].Application.* [project].Common.*
+[project].Application.* [project].Domain.*
+
+# Common Layer
+
+[project].Common [project].Common.*
+[project].Common.* [project].Common.*
+
+# Domain Layer
+
+[project].Domain [project].Domain.*
+[project].Domain.* [project].Domain.*
+[project].Domain.* [project].Common.*
+[project].Domain.* [project].Data.*
+
+# Data Layerr
+
+# DataAccess Layer
+
+[project].DataAccess [project].DataAccess.*
+[project].DataAccess.* [project].DataAccess.*
+[project].DataAccess [project].Domain.*
+[project].DataAccess.* [project].Domain.*
+[project].DataAccess [project].Common.*
+[project].DataAccess.* [project].Common.*
+[project].DataAccess.* [project].Data.*
+
+# Presentation Layer
+
+[project].Presentation [project].Presentation.*
+[project].Presentation.* [project].Presentation.*
+[project].Presentation [project].Application.*
+[project].Presentation.* [project].Application.*
+[project].Presentation [project].Common.*
+[project].Presentation.* [project].Common.*
+
+# Program.cs
+
+[project] [project].Common.*
+[project] [project].Presentation.*

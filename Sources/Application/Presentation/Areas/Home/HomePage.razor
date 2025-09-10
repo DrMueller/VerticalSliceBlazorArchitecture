@@ -1,0 +1,13 @@
+﻿@using MudBlazor
+@attribute [Route(Path)]
+@attribute [Route(Path2)]
+
+<MudStack Row AlignItems="AlignItems.Center" Spacing="1" Class="mb-2">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LoadDataAsync">Load</MudButton>
+</MudStack>
+
+<MudPaper Class="p-3">
+    <p>
+        @DataText
+    </p>
+</MudPaper>
