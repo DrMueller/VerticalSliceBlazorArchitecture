@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using VerticalSliceBlazorArchitecture.Application.Features.LoadSomeData;
 using VerticalSliceBlazorArchitecture.Application.Mediation.Services;
 
@@ -10,14 +9,14 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Areas.Home
         public const string Path = "/home";
         private const string Path2 = "/";
 
-        private string DataText { get; set; } = string.Empty;
-
         [Inject]
         public required IMediationService Mediator { get; set; }
 
+        private string DataText { get; set; } = string.Empty;
+
         private async Task LoadDataAsync()
         {
-            DataText = await Mediator.SendAsync(new LoadSomeData());
+            DataText = await Mediator.SendAsync(new LoadSomeDataQuery());
         }
     }
 }

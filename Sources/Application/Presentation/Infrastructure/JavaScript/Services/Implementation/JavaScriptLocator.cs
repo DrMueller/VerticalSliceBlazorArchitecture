@@ -32,8 +32,6 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Infrastructure.JavaScript
             return path;
         }
 
-
-
         private async Task<string> AppendCacheSuffixAsync(string path)
         {
             var cacheSuffix = await cachingController.LoadCachingSuffixAsync();

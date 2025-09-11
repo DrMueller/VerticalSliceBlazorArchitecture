@@ -2,9 +2,9 @@
 
 namespace VerticalSliceBlazorArchitecture.Common.Extensions
 {
+    [PublicAPI]
     public static class EnumerableExtensions
     {
-        [UsedImplicitly]
         public static bool ContainsAny<T>(this IEnumerable<T> list, IEnumerable<T>? otherList)
         {
             if (otherList == null)

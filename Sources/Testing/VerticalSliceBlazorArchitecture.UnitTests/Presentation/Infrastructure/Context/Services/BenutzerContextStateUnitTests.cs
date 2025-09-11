@@ -1,9 +1,10 @@
+using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Identity.Web;
+using Moq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Text.Json;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Moq;
 using VerticalSliceBlazorArchitecture.Application.Context.Models;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Context.Services.Implementation;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Storage;
@@ -107,7 +108,7 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Presentation.Infrastructure.
         private static ClaimsPrincipal CreateMockPrincipal(string idpGuid)
         {
             var identity = new GenericIdentity("Tra", "");
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, idpGuid));
+            identity.AddClaim(new Claim(ClaimConstants.ObjectId, idpGuid));
 
             var identityMock = new Mock<IIdentity>();
             identityMock.Setup(f => f.IsAuthenticated).Returns(true);

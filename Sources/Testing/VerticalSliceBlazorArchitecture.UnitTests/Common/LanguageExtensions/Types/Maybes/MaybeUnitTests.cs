@@ -11,24 +11,24 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void CastingSome_CastsToValue()
         {
             // Arrange
-            const string str = "Test";
-            var actualSome = new Some<string>(str);
+            const string Str = "Test";
+            var actualSome = new Some<string>(Str);
 
             // Act
             string actualString = actualSome;
 
             // Assert
-            actualString.Should().Be(str);
+            actualString.Should().Be(Str);
         }
 
         [Fact]
         public void CastingValue_CastsToSome()
         {
             // Arrange
-            const string str = "Test";
+            const string Str = "Test";
 
             // Act
-            Maybe<string> actualMaybe = str;
+            Maybe<string> actualMaybe = Str;
 
             // Assert
             actualMaybe.Should().BeOfType<Some<string>>();
@@ -79,9 +79,9 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void Mapping_MaybeBeingSome_ReturnsSome_WithNewMappedValue()
         {
             // Arrange
-            const string initialValue = "1234";
+            const string InitialValue = "1234";
 
-            Maybe<string> someMaybe = initialValue;
+            Maybe<string> someMaybe = InitialValue;
 
             // Act
             var actualMaybe = someMaybe.Map(int.Parse);
@@ -90,7 +90,7 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
             actualMaybe.Should().BeOfType(typeof(Some<int>));
             var actualValue = (int)(Some<int>)actualMaybe;
 
-            var expectedValue = int.Parse(initialValue);
+            var expectedValue = int.Parse(InitialValue);
             actualValue.Should().Be(expectedValue);
         }
 
@@ -111,74 +111,74 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void ReduceNullable_MaybeBeingSome_ReturnsValue()
         {
             // Arrange
-            const int value = 1234;
-            Maybe<int> someMaybe = value;
+            const int Value = 1234;
+            Maybe<int> someMaybe = Value;
 
             // Act
             var actualValue = someMaybe.ReduceNullable(() => null);
 
             // Assert
-            actualValue.Should().Be(value);
+            actualValue.Should().Be(Value);
         }
 
         [Fact]
         public void Reducing_MaybeBeingNone_ReturnsCallbackValue()
         {
             // Arrange
-            const string callbackValue = "1234";
+            const string CallbackValue = "1234";
 
             Maybe<string> someMaybe = None.Value;
 
             // Act
-            var actualValue = someMaybe.Reduce(() => callbackValue);
+            var actualValue = someMaybe.Reduce(() => CallbackValue);
 
             // Assert
-            actualValue.Should().Be(callbackValue);
+            actualValue.Should().Be(CallbackValue);
         }
 
         [Fact]
         public void Reducing_MaybeBeingSome_ReturnsValue()
         {
             // Arrange
-            const string initialValue = "1234";
+            const string InitialValue = "1234";
 
-            Maybe<string> someMaybe = initialValue;
+            Maybe<string> someMaybe = InitialValue;
 
             // Act
             var actualValue = someMaybe.Reduce(() => "tra");
 
             // Assert
-            actualValue.Should().Be(initialValue);
+            actualValue.Should().Be(InitialValue);
         }
 
         [Fact]
         public async Task ReducingAsync_MaybeBeingNone_ReturnsCallbackValue()
         {
             // Arrange
-            const string callbackValue = "1234";
+            const string CallbackValue = "1234";
 
             Maybe<string> someMaybe = None.Value;
 
             // Act
-            var actualValue = await someMaybe.ReduceAsync(() => Task.FromResult(callbackValue));
+            var actualValue = await someMaybe.ReduceAsync(() => Task.FromResult(CallbackValue));
 
             // Assert
-            actualValue.Should().Be(callbackValue);
+            actualValue.Should().Be(CallbackValue);
         }
 
         [Fact]
         public async Task ReducingAsync_MaybeBeingSome_ReturnsValue()
         {
             // Arrange
-            const string initialValue = "1234";
+            const string InitialValue = "1234";
 
-            Maybe<string> someMaybe = initialValue;
+            Maybe<string> someMaybe = InitialValue;
 
             // Act
             var actualValue = await someMaybe.ReduceAsync(() => Task.FromResult("tra"));
 
             // Assert
-            actualValue.Should().Be(initialValue);
+            actualValue.Should().Be(InitialValue);
         }
 
         [Fact]

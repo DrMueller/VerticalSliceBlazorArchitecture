@@ -44,7 +44,7 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Shell.Initialization
             services.AddApplicationInsightsTelemetry(Program.Configuration);
 
             services.AddDataProtection()
-                .SetApplicationName(Common.Constants.AppDescription + hostingEnv.EnvironmentName)
+                .SetApplicationName(Common.Constants.AppName + hostingEnv.EnvironmentName)
                 .SetDefaultKeyLifetime(TimeSpan.FromDays(90))
                 .PersistKeysToFileSystem(new DirectoryInfo("/App_Keys/"));
 
@@ -55,7 +55,7 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Shell.Initialization
                 {
                     await prev(ctx);
                     ctx.Properties!.RedirectUri = IdpRedirect.IdpRedirectPage.Path; // final redirect after sign-in
-                };;
+                };
             });
         }
     }

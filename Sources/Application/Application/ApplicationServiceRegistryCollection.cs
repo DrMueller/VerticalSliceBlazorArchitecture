@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Lamar;
 using VerticalSliceBlazorArchitecture.Application.Mediation.Services;
 using VerticalSliceBlazorArchitecture.Application.Mediation.Services.Handlers;

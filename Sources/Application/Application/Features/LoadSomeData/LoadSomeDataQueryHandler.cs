@@ -1,14 +1,21 @@
 ﻿using MediatR;
 using VerticalSliceBlazorArchitecture.Application.Context.Services;
 using VerticalSliceBlazorArchitecture.Application.Mediation.Models;
+using VerticalSliceBlazorArchitecture.Application.Mediation.Models.Logging;
 
 namespace VerticalSliceBlazorArchitecture.Application.Features.LoadSomeData
 {
-    public record LoadSomeData : IQuery<string>;
-
-    public class LoadSomeDataQueryHandler(IBenutzerContextState benutzerContextState) : IRequestHandler<LoadSomeData, string>
+    public record LoadSomeDataQuery : IQuery<string>, IRequestLogParamsProvider
     {
-        public async Task<string> Handle(LoadSomeData request, CancellationToken cancellationToken)
+        public Task<string> ProvideAsync()
+        {
+            return Task.FromResult("Custom Data");
+        }
+    }
+
+    public class LoadSomeDataQueryHandler(IBenutzerContextState benutzerContextState) : IRequestHandler<LoadSomeDataQuery, string>
+    {
+        public async Task<string> Handle(LoadSomeDataQuery request, CancellationToken cancellationToken)
         {
             var benutzer = await benutzerContextState.GetBenutzerAsync();
 

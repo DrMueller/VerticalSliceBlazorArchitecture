@@ -24,9 +24,9 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.Logging.Services.Serv
         public void Initializing_SetsAuthenticatedUserId()
         {
             // Arrange
-            const string userEmail = "test@test.ch";
+            const string UserEmail = "test@test.ch";
 
-            _logInfoProviderMock.Setup(f => f.ProvideLogInfo()).Returns(new LogInfo(userEmail));
+            _logInfoProviderMock.Setup(f => f.ProvideLogInfo()).Returns(new LogInfo(UserEmail));
 
             var telemetryMock = new Mock<ITelemetry>();
             var telemetryContext = new TelemetryContext();
@@ -38,7 +38,7 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.Logging.Services.Serv
             _sut.Initialize(telemetryMock.Object);
 
             // Assert
-            telemetryContext.User.AuthenticatedUserId.Should().Be(userEmail);
+            telemetryContext.User.AuthenticatedUserId.Should().Be(UserEmail);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MediatR.Pipeline;
-using VerticalSliceBlazorArchitecture.Application.Features.Versioning.GetAssetsCacheVersion;
+using VerticalSliceBlazorArchitecture.Application.Mediation.Models.Logging;
 using VerticalSliceBlazorArchitecture.Common.Logging.Services;
 
 namespace VerticalSliceBlazorArchitecture.Application.Mediation.Services.Handlers
@@ -7,19 +7,31 @@ namespace VerticalSliceBlazorArchitecture.Application.Mediation.Services.Handler
     public class LogPreProcessor<TRequest>(ILoggingService loggingService) : IRequestPreProcessor<TRequest>
         where TRequest : notnull
     {
-        public Task Process(TRequest request, CancellationToken cancellationToken)
+        public async Task Process(TRequest request, CancellationToken cancellationToken)
         {
-            var requestType = request.GetType();
-
-            if (requestType == typeof(GetAssetsCacheVersionQuery))
+            if (request is INotLoggedRequest)
             {
-                return Task.CompletedTask;
+                return;
             }
 
-            var msg = requestType.Name;
-            loggingService.TrackEvent(msg);
+            var logMessage = await GetLogMessageAsync(request);
 
-            return Task.CompletedTask;
+            loggingService.TrackEvent(logMessage);
+        }
+
+        private static async Task<string> GetLogMessageAsync(TRequest request)
+        {
+            var msg = request.GetType().Name;
+
+            if (request is not IRequestLogParamsProvider paramsProvider)
+            {
+                return msg;
+            }
+
+            var requestParams = await paramsProvider.ProvideAsync();
+            msg += $" | Params: {requestParams}";
+
+            return msg;
         }
     }
 }

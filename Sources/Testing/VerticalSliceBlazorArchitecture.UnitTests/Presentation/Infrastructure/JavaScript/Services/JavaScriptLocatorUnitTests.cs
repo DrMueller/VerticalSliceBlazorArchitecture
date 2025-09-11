@@ -1,6 +1,5 @@
 using FluentAssertions;
 using Moq;
-using VerticalSliceBlazorArchitecture.Presentation.Areas.Home;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Caching.Controllers;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.JavaScript.Services.Implementation;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Testing.Components;

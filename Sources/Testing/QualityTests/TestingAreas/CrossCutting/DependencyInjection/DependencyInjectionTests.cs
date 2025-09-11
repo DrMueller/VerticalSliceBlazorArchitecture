@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Lamar;
 using Lamar.IoC;
+using VerticalSliceBlazorArchitecture.Common.Logging.Services;
 using VerticalSliceBlazorArchitecture.DataAccess.Repositories.Base;
 using VerticalSliceBlazorArchitecture.DataAccess.UnitOfWorks.Implementation;
 using VerticalSliceBlazorArchitecture.Domain.Infrastructure.Data.Writing;
@@ -43,17 +44,17 @@ namespace VerticalSliceBlazorArchitecture.QualityTests.TestingAreas.CrossCutting
             failingInjections.Should().BeEmpty();
         }
 
-        //[Fact]
-        //public void LamarConfiguration_IsValid()
-        //{
-        //    var serviceContainer = fixture.AppFactory.Services;
-        //    serviceContainer.Should().BeOfType<Container>();
-        //    var container = (IContainer)serviceContainer;
-        //    var testService = container.GetInstance<ILoggingService>();
+        [Fact]
+        public void LamarConfiguration_IsValid()
+        {
+            var serviceContainer = fixture.AppFactory.Services;
+            serviceContainer.Should().BeOfType<Container>();
+            var container = (IContainer)serviceContainer;
+            var testService = container.GetInstance<ILoggingService>();
 
-        //    testService.Should().NotBeNull();
-        //    container.AssertConfigurationIsValid();
-        //}
+            testService.Should().NotBeNull();
+            container.AssertConfigurationIsValid();
+        }
 
         [Fact]
         public void Repositories_AreTransient()

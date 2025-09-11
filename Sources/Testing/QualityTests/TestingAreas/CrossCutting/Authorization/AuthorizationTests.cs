@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using MediatR;
 using NetArchTest.Rules;
-using VerticalSliceBlazorArchitecture.Application.Mediation.Services;
 using VerticalSliceBlazorArchitecture.Common.LanguageExtensions.Types.Maybes;
 using VerticalSliceBlazorArchitecture.QualityTests.TestingInfrastructure.Fixtures.Assemblies;
 using VerticalSliceBlazorArchitecture.QualityTests.TestingInfrastructure.Fixtures.Quality;

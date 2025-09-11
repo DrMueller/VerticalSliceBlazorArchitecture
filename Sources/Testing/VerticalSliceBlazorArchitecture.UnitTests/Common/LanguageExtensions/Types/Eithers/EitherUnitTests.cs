@@ -31,8 +31,8 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void Mapping_EitherBeingLeft_ReturnsLeft()
         {
             // Arrange
-            const string @string = "Test";
-            Either<string, int> right = @string;
+            const string String = "Test";
+            Either<string, int> right = String;
 
             // Act
             var actualLeft = right.MapRight(num => num + 123);
@@ -45,18 +45,18 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void Mapping_EitherBeingRight_ReturnsMappedValue()
         {
             // Arrange
-            const int intValue = 123;
-            const int expectedIntValue = intValue + intValue;
+            const int IntValue = 123;
+            const int ExpectedIntValue = IntValue + IntValue;
 
-            Either<string, int> right = intValue;
+            Either<string, int> right = IntValue;
 
             // Act
             var actualValue = right
-                .MapRight(num => num + intValue)
+                .MapRight(num => num + IntValue)
                 .Reduce(_ => 1);
 
             // Assert
-            actualValue.Should().Be(expectedIntValue);
+            actualValue.Should().Be(ExpectedIntValue);
         }
 
         [Fact]
@@ -76,28 +76,28 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.Ty
         public void Reducing_EitherBeingLeft_ReturnLeftCallbackValue()
         {
             // Arrange
-            const int expectedInt = 123;
-            Either<string, int> left = expectedInt.ToString();
+            const int ExpectedInt = 123;
+            Either<string, int> left = ExpectedInt.ToString();
 
             // Act
             var actualValue = left.Reduce(int.Parse);
 
             // Assert
-            actualValue.Should().Be(expectedInt);
+            actualValue.Should().Be(ExpectedInt);
         }
 
         [Fact]
         public void Reducing_EitherBeingRight_ReturnsRightValue()
         {
             // Arrange
-            const int intValue = 123;
-            Either<string, int> right = intValue;
+            const int IntValue = 123;
+            Either<string, int> right = IntValue;
 
             // Act
             var actualValue = right.Reduce(_ => 1);
 
             // Assert
-            actualValue.Should().Be(intValue);
+            actualValue.Should().Be(IntValue);
         }
     }
 }

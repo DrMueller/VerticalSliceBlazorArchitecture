@@ -1,7 +1,6 @@
 ﻿using System.Security.Claims;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Identity.Web;
 using VerticalSliceBlazorArchitecture.Application.Context.Models;
 using VerticalSliceBlazorArchitecture.Application.Context.Services;
 using VerticalSliceBlazorArchitecture.Presentation.Areas.Home;

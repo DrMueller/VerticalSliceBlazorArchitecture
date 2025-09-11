@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System.Threading.Tasks;
 using VerticalSliceBlazorArchitecture.Application.Context.Services;
 using VerticalSliceBlazorArchitecture.Common.Logging.Services;
-using VerticalSliceBlazorArchitecture.Presentation.Areas.Home;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Navigation.Services;
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.Security.Exceptions;
 using VerticalSliceBlazorArchitecture.Presentation.Shell.ExceptionHandling;
@@ -14,16 +11,13 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Shell
     public partial class Routes
     {
         [Inject]
+        public required IBenutzerContextState BenutzerContextState { get; set; }
+
+        [Inject]
         public ILoggingService LoggingService { get; set; } = null!;
 
         [Inject]
-        public required IHttpContextAccessor HttpContextAccessor { get; set; }
-
-        [Inject]
         public INavigator Navigator { get; set; } = null!;
-
-        [Inject]
-        public required IBenutzerContextState BenutzerContextState { get; set; }
 
         private AppError? AppError { get; set; }
 
@@ -45,7 +39,7 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Shell
             {
                 await BenutzerContextState.ClearAsync();
 
-                Navigator.NavigateTo("/MicrosoftIdentity/Account/SignOut", forceLoad: true);
+                Navigator.NavigateTo("/MicrosoftIdentity/Account/SignOut", true);
 
                 return;
             }

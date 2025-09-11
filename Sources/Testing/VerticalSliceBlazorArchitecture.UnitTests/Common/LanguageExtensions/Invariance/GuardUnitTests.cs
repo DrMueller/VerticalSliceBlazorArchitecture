@@ -94,7 +94,7 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.LanguageExtensions.In
         public void CheckingValuePositive_ValueBeing0_ThrowsArgumentException()
         {
             // Arrange
-            var model = new GuardTestModel("Test", new object(), new List<object>(), 0);
+            var model = new GuardTestModel("Test", new object(), new List<object>());
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => Guard.ValuePositive(() => model.TestInt));

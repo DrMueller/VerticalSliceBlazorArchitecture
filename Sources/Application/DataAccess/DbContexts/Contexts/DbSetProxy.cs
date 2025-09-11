@@ -10,11 +10,6 @@ namespace VerticalSliceBlazorArchitecture.DataAccess.DbContexts.Contexts
             await dbSet.AddAsync(entity);
         }
 
-        public IQueryable<TEntity> AsNoTracking()
-        {
-            return dbSet.AsNoTracking();
-        }
-
         public IQueryable<TEntity> AsQueryable()
         {
             return dbSet;

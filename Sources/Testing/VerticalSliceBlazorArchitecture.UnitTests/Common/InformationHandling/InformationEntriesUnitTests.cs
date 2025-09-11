@@ -49,18 +49,18 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.InformationHandling
         public void AddingInformation_CreatesNewInfoEntries()
         {
             // Arrange
-            const string infoMessage1 = "info message 1";
-            const string infoMessage2 = "info message 2";
+            const string InfoMessage1 = "info message 1";
+            const string InfoMessage2 = "info message 2";
 
-            var infoEntries = InformationEntries.CreateNew().AddInformation(infoMessage1);
+            var infoEntries = InformationEntries.CreateNew().AddInformation(InfoMessage1);
 
             // Act
-            var actualInfoEntries = infoEntries.AddInformation(infoMessage2);
+            var actualInfoEntries = infoEntries.AddInformation(InfoMessage2);
 
             // Assert
             actualInfoEntries.InfoMessages.Count.Should().Be(2);
-            actualInfoEntries.InfoMessages.Should().Contain(infoMessage1);
-            actualInfoEntries.InfoMessages.Should().Contain(infoMessage2);
+            actualInfoEntries.InfoMessages.Should().Contain(InfoMessage1);
+            actualInfoEntries.InfoMessages.Should().Contain(InfoMessage2);
         }
 
         [Fact]
@@ -87,14 +87,14 @@ namespace VerticalSliceBlazorArchitecture.UnitTests.Common.InformationHandling
         public void CreatingFromError_CreatesFromError()
         {
             // Arrange
-            const string errorMessage = "Error message";
+            const string ErrorMessage = "Error message";
 
             // Act
-            var actualInfoEntries = InformationEntries.CreateFromError(errorMessage);
+            var actualInfoEntries = InformationEntries.CreateFromError(ErrorMessage);
 
             // Assert
             actualInfoEntries.ErrorMessages.Count.Should().Be(1);
-            actualInfoEntries.ErrorMessages.Single().Should().Be(errorMessage);
+            actualInfoEntries.ErrorMessages.Single().Should().Be(ErrorMessage);
         }
 
         [Fact]
