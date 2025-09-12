@@ -10,12 +10,15 @@
 * MediatR.*
 * MudBlazor
 * MudBlazor.*
+* FluentValidation
+* FluentValidation.*
 
 # Application Layer
 
 [project].Application [project].Application.*
 [project].Application.* [project].Application.*
 [project].Application.* [project].Common
+[project].Application [project].Common.*
 [project].Application.* [project].Common.*
 [project].Application.* [project].Domain.*
 
@@ -47,8 +50,11 @@
 
 [project].Presentation [project].Presentation.*
 [project].Presentation.* [project].Presentation.*
-[project].Presentation [project].Application.*
-[project].Presentation.* [project].Application.*
+[project].Presentation [project].Application.Features.*
+[project].Presentation.* [project].Application.Features.*
+[project].Presentation.* [project].Application.Mediation.*
+[project].Presentation.* [project].Application.Context.*
+[project].Presentation [project].Application.Context.*
 [project].Presentation [project].Common.*
 [project].Presentation.* [project].Common.*
 

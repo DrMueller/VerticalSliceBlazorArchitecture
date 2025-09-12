@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using VerticalSliceBlazorArchitecture.Application.Features.LoadSomeData;
 using VerticalSliceBlazorArchitecture.Application.Mediation.Services;
+using VerticalSliceBlazorArchitecture.Common.InformationHandling;
 
 namespace VerticalSliceBlazorArchitecture.Presentation.Areas.Home
 {
@@ -12,11 +13,14 @@ namespace VerticalSliceBlazorArchitecture.Presentation.Areas.Home
         [Inject]
         public required IMediationService Mediator { get; set; }
 
+        private InformationEntries? Infos { get; set; }
+
         private string DataText { get; set; } = string.Empty;
 
         private async Task LoadDataAsync()
         {
-            DataText = await Mediator.SendAsync(new LoadSomeDataQuery());
+            (Infos, _) = await Mediator.SendAsync(new LoadSomeDataQuery(null!)).ToTupleAsync(() => string.Empty);
+            (_, DataText) = await Mediator.SendAsync(new LoadSomeDataQuery("Test1")).ToTupleAsync(() => string.Empty);
         }
     }
 }
