@@ -2,6 +2,7 @@
 using VerticalSliceBlazorArchitecture.Presentation.Infrastructure.JavaScript.Services;
 using VerticalSliceBlazorArchitecture.Presentation.Shell;
 using VerticalSliceBlazorArchitecture.Presentation.Shell.Benutzer;
+using VerticalSliceBlazorArchitecture.QualityTests.TestingInfrastructure;
 using VerticalSliceBlazorArchitecture.QualityTests.TestingInfrastructure.BlazorMetadata.Services;
 using VerticalSliceBlazorArchitecture.Testing.Common.Reflections;
 using Xunit;
@@ -11,6 +12,7 @@ namespace VerticalSliceBlazorArchitecture.QualityTests.TestingAreas.Blazor.Compo
     public class ComponentConsistencyTests
     {
         [Fact]
+        [QualityTest("Components must not use code elements, but have a partial csharp class.")]
         public void ComponentMarkups_DoNotContainCode()
         {
             var failingComponents = BlazorComponentFactory
